@@ -32,7 +32,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/auth', require('./routes/auth'));
-app.use('/users', require('./routes/users'));
 app.use('/articles', require('./routes/articles'));
 
 app.use(passport.initialize());
