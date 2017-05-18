@@ -42,6 +42,30 @@ methods.getById = function(req, res){
   })
 }
 
+methods.getByCategory = function(req, res){
+  Article.find({category : req.params.category })
+	.populate('author')
+	.exec((error, records) => {
+    if(error){
+      res.json({error})
+    } else {
+			res.json(records);
+    }
+  })
+}
+
+methods.getByAuthor = function(req, res){
+  Article.find({author : req.params.author })
+	.populate('author')
+	.exec((error, records) => {
+    if(error){
+      res.json({error})
+    } else {
+			res.json(records);
+    }
+  })
+}
+
 methods.updateById = function(req, res){
   Article.findByIdAndUpdate(req.params.id,
 		{ $set: {
